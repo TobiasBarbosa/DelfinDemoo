@@ -11,15 +11,17 @@ public class CompetitionRecord {
     private double resultTime;
     private String event;
     private LocalDate competitionDate;
+    MemberCompetition memberCompetition;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public CompetitionRecord(String discipline, int lengthMeter, double resultTime, String event,
-                             LocalDate competitionDate){
+                             LocalDate competitionDate, MemberCompetition memberCompetition){
         this.discipline = discipline;
         this.lengthMeter = lengthMeter;
         this.resultTime = resultTime;
         this.event = event;
         this.competitionDate = competitionDate;
+        memberCompetition.addCompetitionRecord(this);
 
     }
 
@@ -27,12 +29,12 @@ public class CompetitionRecord {
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     public String toString(){
         DecimalFormat df = new DecimalFormat("#.00");
-        return "domain_model.Member's competition records\n"   +
-                "domain_model.Discipline: "  + discipline      + '\n'        +
+        return "Member's competition records\n"   +
+                "Discipline: "  + discipline      + '\n'        +
                 "Length: "      + lengthMeter     + "meter"     + '\n' +
                 "Time result: " + df.format(resultTime) + '\n' +
                 "Date: "        + competitionDate + '\n'        +
-                "domain_model.Discipline: "  + event           + '\n';
+                "Event: "       + event           + '\n';
     }
 
     //------------------------------------------------------------------------------------------------------------------

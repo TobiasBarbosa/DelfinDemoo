@@ -11,10 +11,11 @@ public class MemberExercise extends Member {
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public MemberExercise(String firstName, String lastName, LocalDate dateOfBirth, boolean isActiveMember,
+    public MemberExercise(String firstName, String lastName, int memberID, LocalDate dateOfBirth, boolean isActiveMember,
                           MemberType memberType){
         super(firstName,
               lastName,
+              memberID,
               dateOfBirth,
               isActiveMember,
               memberType);
@@ -24,7 +25,7 @@ public class MemberExercise extends Member {
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.00");
-        return "domain_model.Member information\n" +
+        return "Member information\n" +
                 "Name: "                  + getFirstName()   + " "  + getLastName() + '\n' +
                 "Date of birth: "         + getDateOfBirth() + '\n' +
                 "Active member: "         + isActiveMember() + '\n' +

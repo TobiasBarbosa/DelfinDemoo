@@ -3,6 +3,11 @@ package domain_model;
 public class Coach {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
+    //What does coach need in the constructor?
+    //addCompetition(){}
+    //editCompetition(){}
+    //addTraining(){}
+    //editTraining(){}
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     String coachName;
@@ -20,6 +25,6 @@ public class Coach {
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString(){
-        return "domain_model.Coach name: " + coachName + '\n';
+        return "Coach name: " + coachName + '\n';
     }
 }

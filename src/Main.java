@@ -7,9 +7,12 @@ import java.time.LocalDate;
 
 public class Main {
 
+    // TODO lav x
+    // TODO lav xx
+
     public static void main(String[] args) {
 
-        Member member1 = new MemberCompetition("Tobias", "Barbosa", LocalDate.of(1994, 4, 26), true, MemberType.SENIOR);
+        Member member1 = new MemberCompetition("Tobias", "Barbosa", 123456,LocalDate.of(1994, 4, 26), true, MemberType.SENIOR);
 
         System.out.println(member1);
     }

@@ -13,21 +13,24 @@ public class TrainingRecord {
     private int lengthMeter;
     private double resultTime;
     private LocalDate trainingDate;
+    private MemberCompetition memberCompetition;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public TrainingRecord(String discipline, int lengthMeter, double resultTime, String event,
-                          LocalDate competitionDate){
+                          LocalDate competitionDate, MemberCompetition memberCompetition){
         this.discipline = discipline.toString();
         this.lengthMeter = lengthMeter;
         this.resultTime = resultTime;
         this.trainingDate = trainingDate;
+        this.memberCompetition = memberCompetition;
+        memberCompetition.addTrainingRecord(this);
 
     }
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     public String toString(){
         DecimalFormat df = new DecimalFormat("#.00");
-        return "domain_model.Member's training records\n"   +
+        return "Member's training records\n"   +
                 "domain_model.Discipline: "  + discipline   + '\n'            +
                 "Length: "      + df.format(lengthMeter) + "meter" + '\n' +
                 "Time result: " + resultTime   + '\n'            +

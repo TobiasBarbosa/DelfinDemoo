@@ -18,6 +18,11 @@ public class Team {
         this.teamList = new ArrayList<>();
     }
 
+    //***GETTER METHODS***----------------------------------------------------------------------------------------------
+    public String getTeamName(){
+        return teamName;
+    }
+
     //***METHODS***-----------------------------------------------------------------------------------------------------
     public void addMemberToTeam(Member member){
         this.teamList.add(member);
@@ -30,11 +35,11 @@ public class Team {
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString() {
-        return "domain_model.Team" +
-                "domain_model.Team name: " + teamName + '\n' +
-                "domain_model.Team Info: " + teamInfo + '\n' +
-                "domain_model.Coach: "     + coach.getCoachName() + '\n' +
-                "domain_model.Team list: " + teamList ;
+        return "Team" +
+               "Team name: " + teamName + '\n' +
+               "Team Info: " + teamInfo + '\n' +
+               "Coach: "     + coach.getCoachName() + '\n' +
+               "Team list: " + teamList ;
     }
     //------------------------------------------------------------------------------------------------------------------
 }
