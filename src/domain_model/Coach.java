@@ -3,28 +3,34 @@ package domain_model;
 public class Coach {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //What does coach need in the constructor?
+    //What do coach need in the constructor?
     //addCompetition(){}
     //editCompetition(){}
     //addTraining(){}
     //editTraining(){}
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
-    String coachName;
+    String coachFirstName;
+    String coachLastName;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public Coach(String coachName){
-        this.coachName = coachName;
+    public Coach(String coachFirstName, String coachLastName){
+        this.coachFirstName = coachFirstName;
+        this.coachLastName = coachLastName;
     }
 
     //***GETTER METHODS***----------------------------------------------------------------------------------------------
-    public String getCoachName(){
-        return coachName;
+    public String getCoachFirstName(){
+        return coachFirstName;
+    }
+
+    public String getCoachLastName(){
+        return coachLastName;
     }
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString(){
-        return "Coach name: " + coachName + '\n';
+        return "Coach name: " + coachFirstName + '\n';
     }
 }

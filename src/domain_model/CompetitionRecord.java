@@ -1,40 +1,46 @@
 package domain_model;
-
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public class CompetitionRecord {
 
+    //QUESTIONS & MISSING CODE***---------------------------------------------------------------------------------------
+    //How to insert the member in the constructor so it connects to an actual instance?
+
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
-    private String discipline;
+    private Discipline discipline;
     private int lengthMeter;
-    private double resultTime;
+    private double resultTimeMinutes;
     private String event;
     private LocalDate competitionDate;
     MemberCompetition memberCompetition;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public CompetitionRecord(String discipline, int lengthMeter, double resultTime, String event,
-                             LocalDate competitionDate, MemberCompetition memberCompetition){
+    public CompetitionRecord(Discipline discipline, int lengthMeter, double resultTimeMinutes, String event,
+                             LocalDate competitionDate /*, MemberCompetition memberCompetition*/){
         this.discipline = discipline;
         this.lengthMeter = lengthMeter;
-        this.resultTime = resultTime;
+        this.resultTimeMinutes = resultTimeMinutes;
         this.event = event;
         this.competitionDate = competitionDate;
-        memberCompetition.addCompetitionRecord(this);
+        //this.memberCompetition = memberCompetition;
+        //memberCompetition.addCompetitionRecord(this);
 
     }
+
+
+    //***METHODS***-----------------------------------------------------------------------------------------------------
 
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     public String toString(){
         DecimalFormat df = new DecimalFormat("#.00");
-        return "Member's competition records\n"   +
-                "Discipline: "  + discipline      + '\n'        +
-                "Length: "      + lengthMeter     + "meter"     + '\n' +
-                "Time result: " + df.format(resultTime) + '\n' +
-                "Date: "        + competitionDate + '\n'        +
-                "Event: "       + event           + '\n';
+        return /*"***MEMBER'S COMPETITION RECORDS***\n"*/ "\n"  +
+                "Discipline: "        + discipline      + '\n'        +
+                "Length: "            + lengthMeter     + " meter"    + '\n' +
+                "Time result (min): " + df.format(resultTimeMinutes) + '\n' +
+                "Date: "              + competitionDate + '\n'        +
+                "Event: "             + event           + '\n';
     }
 
     //------------------------------------------------------------------------------------------------------------------

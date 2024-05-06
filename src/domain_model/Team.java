@@ -1,5 +1,4 @@
 package domain_model;
-
 import java.util.ArrayList;
 
 public class Team {
@@ -14,7 +13,7 @@ public class Team {
     public Team(String teamName, String teamInfo, Coach coach){
         this.teamName = teamName;
         this.teamInfo = teamInfo;
-        this.coach = new Coach(coach.getCoachName());
+        this.coach = coach;
         this.teamList = new ArrayList<>();
     }
 
@@ -38,8 +37,9 @@ public class Team {
         return "Team" +
                "Team name: " + teamName + '\n' +
                "Team Info: " + teamInfo + '\n' +
-               "Coach: "     + coach.getCoachName() + '\n' +
+               "Coach: "     + coach.getCoachFirstName() + '\n' +
                "Team list: " + teamList ;
     }
+
     //------------------------------------------------------------------------------------------------------------------
 }

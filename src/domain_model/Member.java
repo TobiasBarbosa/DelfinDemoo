@@ -7,13 +7,14 @@ import java.util.ArrayList;
 public abstract class Member {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //calculateMemberDebt(){}
+    //calculateMemberDebt(){} --- single Member
     //setIsFeePaid(){}
     //private boolean isLatestFeePaid; ??
+    // convert true and false to yes and no in isActiveMember()
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
-    private String firstName;
-    private String lastName;
+    private String memberFirstName;
+    private String memberLastName;
     private int memberID;
     private LocalDate dateOfBirth;
     private boolean isActiveMember;
@@ -24,10 +25,11 @@ public abstract class Member {
     private ArrayList<Team> teams;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public Member(String firstName, String lastName, int memberID, LocalDate dateOfBirth, boolean isActiveMember,
+    public Member(String memberFirstName, String memberLastName, int memberID, LocalDate dateOfBirth, boolean isActiveMember,
                   MemberType memberType){
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.memberFirstName = memberFirstName;
+        this.memberLastName = memberLastName;
+        this.memberID = memberID;
         this.dateOfBirth = dateOfBirth;
         this.isActiveMember = isActiveMember;
         this.memberType = memberType.toString();
@@ -37,12 +39,16 @@ public abstract class Member {
     }
 
     //***GETTER METHODS***----------------------------------------------------------------------------------------------
-    public String getFirstName() {
-        return firstName;
+    public String getMemberFirstName() {
+        return memberFirstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getMemberLastName() {
+        return memberLastName;
+    }
+
+    public int getMemberID(){
+        return memberID;
     }
 
     public LocalDate getDateOfBirth() {
@@ -65,6 +71,32 @@ public abstract class Member {
         return memberDebt;
     }
 
+    //***SETTER METHODS***----------------------------------------------------------------------------------------------
+    public void setMemberFirstName(String memberFirstName) {
+        this.memberFirstName = memberFirstName;
+    }
+
+    public void setMemberLastName(String memberLastName) {
+        this.memberLastName = memberLastName;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setActiveMember(boolean activeMember) {
+        isActiveMember = activeMember;
+    }
+
+    public void setMemberType(String memberType) {
+        this.memberType = memberType;
+    }
+
+    public void setMemberDebt(double memberDebt) {
+        this.memberDebt = memberDebt;
+    }
+
+
     //***METHODS***-----------------------------------------------------------------------------------------------------
     public double calculateYearlyMemberFee() {
         LocalDate currentDate = LocalDate.now();
@@ -85,13 +117,14 @@ public abstract class Member {
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.00");
-        return "Member information\n" +
-                "Name: "                  + firstName      + " "  + lastName + '\n' +
-                "Date of birth: "         + dateOfBirth    + '\n' +
-                "Active member: "         + isActiveMember + '\n' +
-                "Category: "              + memberType     + '\n' +
+        return  "\n"                      +
+                "***MEMBER'S INFORMATION" +
+                "Name: "                  + memberFirstName + " "  + memberLastName + '\n' +
+                "Date of birth: "         + dateOfBirth     + '\n' +
+                "Active member: "         + isActiveMember  + '\n' +
+                "Category: "              + memberType      + '\n' +
                 "Yearly membership fee: " + df.format(yearlyMembershipFee) +" DKK\n" +
-                "Debt: "                  + memberDebt     + '\n' ;
+                "Debt: "                  + memberDebt      + '\n' ;
     }
 
     //------------------------------------------------------------------------------------------------------------------

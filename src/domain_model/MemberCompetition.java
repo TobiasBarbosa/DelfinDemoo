@@ -38,15 +38,15 @@ public class MemberCompetition extends Member{
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.00");
-        return "Member information\n" +
-                "Name: "                  + getFirstName()    + " "  + getLastName() + '\n' +
-                "Date of birth: "         + getDateOfBirth()  + '\n' +
-                "Active member: "         + isActiveMember()  + '\n' +
-                "Category: "              + getMemberType()   + '\n' +
-                "Yearly membership fee: " + df.format(getYearlyMembershipFee()) +" DKK\n" +
-                "Debt: "                  + getMemberDebt()   + '\n' +
-                "Competition records: "   + competitionRecord + '\n' +
-                "Training records: "      + trainingRecord    + '\n' ;
+        return  "***MEMBER'S INFORMATION***\n" +
+                "Name: "                       + getMemberFirstName()    + " "  + getMemberLastName() + '\n' +
+                "Date of birth: "              + getDateOfBirth()  + '\n' +
+                "Active member: "              + isActiveMember()  + '\n' +
+                "Category: "                   + getMemberType()   + '\n' +
+                "Yearly membership fee: "      + df.format(getYearlyMembershipFee()) +" DKK\n" +
+                "Debt: "                       + getMemberDebt()   + '\n' +
+                "Competition records: "        + competitionRecord + '\n' +
+                "Training records: "           + trainingRecord    + '\n' ;
     }
 
     //------------------------------------------------------------------------------------------------------------------
