@@ -7,7 +7,7 @@ public class MemberExercise extends Member {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
     //Do we need any attributes for the constructor?
-
+    //we need teams inside the constructor
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
@@ -19,6 +19,7 @@ public class MemberExercise extends Member {
               dateOfBirth,
               isActiveMember,
               memberType);
+              //teams)
     }
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------

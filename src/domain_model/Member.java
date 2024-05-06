@@ -10,7 +10,8 @@ public abstract class Member {
     //calculateMemberDebt(){} --- single Member
     //setIsFeePaid(){}
     //private boolean isLatestFeePaid; ??
-    // convert true and false to yes and no in isActiveMember()
+    //convert true and false to yes and no in isActiveMember()
+    //we need teams inside the constructor
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private String memberFirstName;

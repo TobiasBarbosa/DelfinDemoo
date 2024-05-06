@@ -7,6 +7,7 @@ public class MemberCompetition extends Member{
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
     //How to make sure that multiple records are registered for the member?
+    //we need teams as inside the constructor
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private ArrayList<CompetitionRecord> competitionRecord;
@@ -21,6 +22,7 @@ public class MemberCompetition extends Member{
               dateOfBirth,
               isActiveMember,
               memberType);
+              //teams);
         this.competitionRecord = new ArrayList<>();
         this.trainingRecord =new ArrayList<>();
     }

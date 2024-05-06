@@ -25,9 +25,7 @@ public class CompetitionRecord {
         this.competitionDate = competitionDate;
         //this.memberCompetition = memberCompetition;
         //memberCompetition.addCompetitionRecord(this);
-
     }
-
 
     //***METHODS***-----------------------------------------------------------------------------------------------------
 
