@@ -1,6 +1,10 @@
 package domain_model;
+import comparator.RecordComparator;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MemberCollection {
 
@@ -10,6 +14,9 @@ public class MemberCollection {
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private ArrayList<Member> membersList;
+    ArrayList<Record> recordList;
+    Member member;
+    Discipline discipline;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public MemberCollection(){
@@ -35,28 +42,29 @@ public class MemberCollection {
         return teamMembers;
     }
 
-
-    public ArrayList<String> getAllSeniorMembers() {
-        ArrayList<String> seniorMembers = new ArrayList<>();
-        for (Member member : membersList) {
-            if(member.isActiveMember().equals("Yes")) {
-                seniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
-            }
-        }
-        return seniorMembers; //needs to know which coach the list is for...
-    }
-
     public ArrayList<String> getAllJuniorMembers() {
         ArrayList<String> juniorMembers = new ArrayList<>();
         for (Member member : membersList) {
-            if(member.isActiveMember().equals("No")) {
+            if(member.calculateMembershipAgeGroup().equals("Junior")) {
                 juniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
             }
         }
         return juniorMembers; //needs to know which coach the list is for...
     }
 
-    //***USER METHODS***------------------------------------------------------------------------------------------------
+    public ArrayList<String> getAllSeniorMembers() {
+        ArrayList<String> seniorMembers = new ArrayList<>();
+        for (Member member : membersList) {
+            if(member.calculateMembershipAgeGroup().equals("Senior")) {
+                seniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
+            }
+        }
+        return seniorMembers; //needs to know which coach the list is for...
+    }
+
+
+
+    //***METHODS***-----------------------------------------------------------------------------------------------------
     public ArrayList<Member> searchMember(String membersSearched) {
         var foundMembers = new ArrayList<Member>(); //var kalder variablen, som er defineret efter new
         for (Member member : membersList) {
@@ -147,6 +155,231 @@ public class MemberCollection {
     }
 
 
+    //***COMPARATOR METHODS***------------------------------------------------------------------------------------------
+    //***CRAWL***-------------------------------------------------------------------------------------------------------
+    public List<Record> findTopFiveCompetitionRecordJuniorCrawl(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                    competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveCompetitionRecordSeniorCrawl(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordJuniorCrawl(){
+        ArrayList<Record> trainingRecordCrawlList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                trainingRecordCrawlList.add(record);
+            }
+        } Collections.sort(trainingRecordCrawlList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordCrawlList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordSeniorCrawl(){
+        ArrayList<Record> trainingRecordCrawlList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                trainingRecordCrawlList.add(record);
+            }
+        } Collections.sort(trainingRecordCrawlList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordCrawlList.subList(0,4);
+    }
+
+    //***BUTTERFLY***---------------------------------------------------------------------------------------------------
+    public List<Record> findTopFiveCompetitionRecordJuniorButterfly(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveCompetitionRecordSeniorButterfly(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordJuniorButterfly(){
+        ArrayList<Record> trainingRecordButterflyList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                trainingRecordButterflyList.add(record);
+            }
+        } Collections.sort(trainingRecordButterflyList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordButterflyList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordSeniorButterfly(){
+        ArrayList<Record> trainingRecordButterflyList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                trainingRecordButterflyList.add(record);
+            }
+        } Collections.sort(trainingRecordButterflyList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordButterflyList.subList(0,4);
+    }
+
+    //***BREASTSTROKE***------------------------------------------------------------------------------------------------
+    public List<Record> findTopFiveCompetitionRecordJuniorBreaststroke(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveCompetitionRecordSeniorBreaststroke(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordJuniorBreaststroke(){
+        ArrayList<Record> trainingRecordBreaststrokeList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                trainingRecordBreaststrokeList.add(record);
+            }
+        } Collections.sort(trainingRecordBreaststrokeList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordBreaststrokeList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordSeniorBreaststroke(){
+        ArrayList<Record> trainingRecordBreaststrokeList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                trainingRecordBreaststrokeList.add(record);
+            }
+        } Collections.sort(trainingRecordBreaststrokeList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordBreaststrokeList.subList(0,4);
+    }
+
+    //***BACKSTROKE***--------------------------------------------------------------------------------------------------
+    public List<Record> findTopFiveCompetitionRecordJuniorBackstroke(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveCompetitionRecordSeniorBackstroke(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordJuniorBackstroke(){
+        ArrayList<Record> trainingRecordBackstrokeList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                trainingRecordBackstrokeList.add(record);
+            }
+        } Collections.sort(trainingRecordBackstrokeList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordBackstrokeList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordSeniorBackstroke(){
+        ArrayList<Record> trainingRecordBackstrokeList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                trainingRecordBackstrokeList.add(record);
+            }
+        } Collections.sort(trainingRecordBackstrokeList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordBackstrokeList.subList(0,4);
+    }
+
+    //***FREESTYLE***---------------------------------------------------------------------------------------------------
+    public List<Record> findTopFiveCompetitionRecordJuniorFreestyle(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveCompetitionRecordSeniorFreestyle(){
+        ArrayList<Record> competitionRecordList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof CompetitionRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                competitionRecordList.add(record);
+            }
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+
+        return competitionRecordList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordJuniorFreestyle(){
+        ArrayList<Record> trainingRecordFreestyleList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Junior") ) {
+                trainingRecordFreestyleList.add(record);
+            }
+        } Collections.sort(trainingRecordFreestyleList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordFreestyleList.subList(0,4);
+    }
+
+    public List<Record> findTopFiveTrainingRecordSeniorFreestyle(){
+        ArrayList<Record> trainingRecordFreestyleList = new ArrayList<>();
+        for (Record record : recordList) {
+            if (record instanceof TrainingRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Senior") ) {
+                trainingRecordFreestyleList.add(record);
+            }
+        } Collections.sort(trainingRecordFreestyleList, new RecordComparator()); //sorterer resultTime
+
+        return trainingRecordFreestyleList.subList(0,4);
+    }
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override

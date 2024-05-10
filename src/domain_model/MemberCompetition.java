@@ -87,6 +87,7 @@ public class MemberCompetition extends Member{
     }
 
 
+
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString() {
@@ -95,8 +96,8 @@ public class MemberCompetition extends Member{
         return  "***MEMBER'S INFORMATION***\n" +
                 "Name: "                       + getMemberFirstName()     + " "  + getMemberLastName()  + '\n' +
                 "Member ID: "                  + getMemberID()            + '\n' +
-                "Date of birth: "              + getDateOfBirth()  + '\n' +
-                "Active member: "              + isActiveMember()  + '\n' +
+                "Date of birth: "              + getDateOfBirth()         + '\n' +
+                "Active member: "              + isActiveMember()         + '\n' +
                 "Senior or Junior: "           + getMembershipAgeGroup()  + '\n' +
                 "Yearly membership fee: "      + df.format(getYearlyMembershipFee()) + " DKK\n" +
                 "Debt: "                       + df.format(getMemberDebt())          + " DKK\n" +

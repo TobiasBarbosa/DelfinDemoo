@@ -30,6 +30,7 @@ public class Team {
     public String isSeniorTeam(){
         return isSeniorTeam ? "Senior" : "Junior";
     }
+    
     public String getCoach() {
         return coach.getCoachFirstName() + ' ' + coach.getCoachLastName();
     }

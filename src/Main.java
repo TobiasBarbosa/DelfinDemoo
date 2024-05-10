@@ -29,11 +29,14 @@ public class Main {
         CompetitionRecord competitionRecord1 = new CompetitionRecord(Discipline.BREASTSTROKE,50,
                                                                      1.07, LocalDate.of(2020,6,
                                                                      7),"Bellahøj DM");
+        CompetitionRecord competitionRecord12 = new CompetitionRecord(Discipline.BREASTSTROKE, 50,
+                                                                      1.06,LocalDate.of(2020,6,5), "Herning Jylland");
 
         TrainingRecord trainingRecord1 = new TrainingRecord(Discipline.BUTTERFLY, 100, 2.57,
                                                             LocalDate.of(2004, 1,5));
 
         member1.addCompetitionRecord(competitionRecord1);
+        member1.addCompetitionRecord(competitionRecord12);
         member1.addTrainingRecord(trainingRecord1);
         memberCollection.addMembersToList(member1);
         team1.addMemberToTeam(member1);
@@ -76,7 +79,9 @@ public class Main {
 
         //***PRINT OUTS***----------------------------------------------------------------------------------------------
         System.out.println(memberCollection.getAllSeniorMembers());
+        System.out.println(memberCollection.getAllJuniorMembers());
         System.out.println(team1.getAllBreaststrokeSeniorMembers()); //
+        System.out.println(member1.getMemberFirstName() + member1.findBestCompetetionRecord());
         //System.out.println(member1);
         //System.out.println(team1);
         //System.out.println(member2);
