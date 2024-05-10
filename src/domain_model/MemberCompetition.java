@@ -72,7 +72,7 @@ public class MemberCompetition extends Member{
             if (record instanceof TrainingRecord) {
                 trainingRecordList.add(record);
             }
-        } Collections.sort(trainingRecordList, new RecordComparator()); //sorterer
+        } Collections.sort(trainingRecordList, new RecordComparator()); //sorterer resultTime
         return (trainingRecordList.get(0)); //henter index 0 og retunerer den
     }
 
@@ -82,7 +82,7 @@ public class MemberCompetition extends Member{
             if (record instanceof CompetitionRecord) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer
+        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
         return (competitionRecordList.get(0)); //henter index 0 og retunerer den
     }
 

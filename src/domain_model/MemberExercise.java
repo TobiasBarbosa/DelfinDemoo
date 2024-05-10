@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class MemberExercise extends Member {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //Do we need any attributes for the constructor?
+    //Do we need any additional attributes for the constructor?
     //we need teams inside the constructor
     //How to properly use the super() function in the constructor as a subclass?
 

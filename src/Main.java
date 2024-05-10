@@ -1,5 +1,6 @@
 import domain_model.*;
 
+import java.io.FilterOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -16,11 +17,9 @@ public class Main {
         Coach coach2 = new Coach("Francisca", "Barbosa");
 
         //***TEAMS***---------------------------------------------------------------------------------------------------
-        Team team1 = new Team(Discipline.BREASTSTROKE,"Team 1", "Senior 50 meter",
-                              true, coach1);
+        Team team1 = new Team(Discipline.BREASTSTROKE,"Team 1",true, coach1);
 
-        Team team2 = new Team(Discipline.BUTTERFLY, "Team 2", "Senior 100 meter",
-                              true, coach2);
+        Team team2 = new Team(Discipline.BUTTERFLY, "Team 2",true, coach2);
 
         //***MEMBER 1***------------------------------------------------------------------------------------------------
         MemberCompetition member1 = new MemberCompetition("Tobias", "Barbosa",
@@ -77,6 +76,7 @@ public class Main {
 
         //***PRINT OUTS***----------------------------------------------------------------------------------------------
         System.out.println(memberCollection.getAllSeniorMembers());
+        System.out.println(team1.getAllBreaststrokeSeniorMembers()); //
         //System.out.println(member1);
         //System.out.println(team1);
         //System.out.println(member2);

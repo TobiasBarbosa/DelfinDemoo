@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public class TrainingRecord extends Record {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //Should we put a domain_model.Member object inside the constructor?
     //best record comparator in this class?
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------

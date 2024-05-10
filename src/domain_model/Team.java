@@ -4,23 +4,19 @@ import java.util.ArrayList;
 public class Team {
 
     //***TO DO***-------------------------------------------------------------------------------------------------------
-    //TODO - make Discipline attribute in constructor
-    //TODO - make the addMethod work so it takes in the condition of age (maybe this should be made in UI?)
-    //TODO - Add method to Teamlist -> sout not allowed so make error null eller noget...
+    //TODO - Add method to Teamlist -> print error code...
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private Discipline discipline; //why not accessed?!
     private String teamName;
-    private String teamInfo;
     private boolean isSeniorTeam;
     private ArrayList<Member> teamList;
     private Coach coach;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public Team(Discipline discipline, String teamName, String teamInfo, boolean isSeniorTeam, Coach coach){
+    public Team(Discipline discipline, String teamName, boolean isSeniorTeam, Coach coach){
         this.discipline = discipline;
         this.teamName = teamName;
-        this.teamInfo = teamInfo;
         this.isSeniorTeam = isSeniorTeam;
         this.coach = coach;
         this.teamList = new ArrayList<>();
@@ -29,10 +25,6 @@ public class Team {
     //***GETTER METHODS***----------------------------------------------------------------------------------------------
     public String getTeamName(){
         return teamName;
-    }
-
-    public String getTeamInfo() {
-        return teamInfo;
     }
 
     public String isSeniorTeam(){
@@ -156,7 +148,7 @@ public class Team {
     }
 
 
-    //***METHODS***-----------------------------------------------------------------------------------------------------
+    //***ADD & REMOVE METHODS***-----------------------------------------------------------------------------------------------------
     public void addMemberToTeam(Member member){
         if ((isSeniorTeam && member.getMemberAge() >= 18) || (!isSeniorTeam && member.getMemberAge() < 18)) {
             this.teamList.add(member);
@@ -172,9 +164,8 @@ public class Team {
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString() {
-        return "Team:\n" +
+        return "Team:\n"     +
                "Team name: " + teamName       + '\n' +
-               "Team Info: " + teamInfo       + '\n' +
                "Team Info: " + isSeniorTeam() + '\n' +
                "Coach: "     + getCoach()     + '\n' +
                "Team members: \n"             +
