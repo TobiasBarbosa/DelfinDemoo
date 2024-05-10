@@ -1,22 +1,24 @@
 package domain_model;
 
+import java.util.ArrayList;
+
 public class Coach {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //What do coach need in the constructor?
-    //addCompetition(){}
-    //editCompetition(){}
-    //addTraining(){}
-    //editTraining(){}
+    //TODO fix toString for getCoachedMemberNamesForCompetition() so it knows which Coach the list of members is for
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     String coachFirstName;
     String coachLastName;
 
+    private ArrayList<MemberCompetition> coachedMembers;
+
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public Coach(String coachFirstName, String coachLastName){
         this.coachFirstName = coachFirstName;
         this.coachLastName = coachLastName;
+
+        coachedMembers = new ArrayList<>();
     }
 
     //***GETTER METHODS***----------------------------------------------------------------------------------------------
@@ -28,9 +30,44 @@ public class Coach {
         return coachLastName;
     }
 
+    public ArrayList<String> getCoachedMemberNamesForCompetition() {
+        ArrayList<String> coachedMemberNames = new ArrayList<>();
+        for (MemberCompetition member : coachedMembers) {
+        coachedMemberNames.add(member.getMemberFirstName() + " " + member.getMemberLastName());
+         }
+            return coachedMemberNames; //needs to know which coach the list is for...
+    }
+
+
+
+    //***ADD & REMOVE METHODS***----------------------------------------------------------------------------------------
+    public void addCompetitionMemberToCoach(MemberCompetition memberCompetition){
+        coachedMembers.add(memberCompetition);
+    }
+
+    public void removeCompetitionMemberFromCoach(MemberCompetition memberCompetition){
+        coachedMembers.remove(memberCompetition);
+    }
+
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString(){
-        return "Coach name: " + coachFirstName + '\n';
+        return "Coach name: " + coachFirstName + " " + coachLastName + '\n';
     }
+
+    //------------------------------------------------------------------------------------------------------------------
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

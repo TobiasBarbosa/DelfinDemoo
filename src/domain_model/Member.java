@@ -2,41 +2,35 @@ package domain_model;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 
 public abstract class Member {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //calculateMemberDebt(){} --- single Member
-    //setIsFeePaid(){}
-    //private boolean isLatestFeePaid; ??
-    //convert true and false to yes and no in isActiveMember()
-    //we need teams inside the constructor
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
-    private String memberFirstName;
-    private String memberLastName;
-    private int memberID;
+    private String    memberFirstName;
+    private String    memberLastName;
+    private int       memberID;
     private LocalDate dateOfBirth;
-    private boolean isActiveMember;
-    private String memberType;
-    private double yearlyMembershipFee;
-    //private boolean isLatestFeePaid; ??
-    private double memberDebt;
-    private ArrayList<Team> teams;
+    private boolean   isActiveMember;
+    private double    yearlyMembershipFee;
+    private String    membershipAgeGroup;
+    private double    memberDebt;
+
+    private static int nextMemberID = 1;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public Member(String memberFirstName, String memberLastName, int memberID, LocalDate dateOfBirth, boolean isActiveMember,
-                  MemberType memberType){
+    public Member(String memberFirstName, String memberLastName, LocalDate dateOfBirth,
+                  boolean isActiveMember, double memberDebt){
+
         this.memberFirstName = memberFirstName;
         this.memberLastName = memberLastName;
-        this.memberID = memberID;
+        this.memberID = generateMemberID();
         this.dateOfBirth = dateOfBirth;
         this.isActiveMember = isActiveMember;
-        this.memberType = memberType.toString();
-        //teams.getTeamName(); //Not sure this is correct - something if member exist in Array - return teamName;
+        this.memberDebt = memberDebt;
         this.yearlyMembershipFee = calculateYearlyMemberFee();
-
+        this.membershipAgeGroup = calculateMembershipAgeGroup();
     }
 
     //***GETTER METHODS***----------------------------------------------------------------------------------------------
@@ -56,12 +50,8 @@ public abstract class Member {
         return dateOfBirth;
     }
 
-    public boolean isActiveMember() {
-        return isActiveMember;
-    }
-
-    public String getMemberType() {
-        return memberType;
+    public String isActiveMember() {
+        return (true) ? "Yes" : "No";
     }
 
     public double getYearlyMembershipFee() {
@@ -70,6 +60,15 @@ public abstract class Member {
 
     public double getMemberDebt() {
         return memberDebt;
+    }
+
+    public String getMembershipAgeGroup() {
+        return membershipAgeGroup;
+    }
+
+    public int getMemberAge() {
+        LocalDate currentDate = LocalDate.now();
+        return Period.between(dateOfBirth, currentDate).getYears();
     }
 
     //***SETTER METHODS***----------------------------------------------------------------------------------------------
@@ -89,16 +88,29 @@ public abstract class Member {
         isActiveMember = activeMember;
     }
 
-    public void setMemberType(String memberType) {
-        this.memberType = memberType;
-    }
-
     public void setMemberDebt(double memberDebt) {
         this.memberDebt = memberDebt;
     }
 
 
     //***METHODS***-----------------------------------------------------------------------------------------------------
+    public int generateMemberID() {
+        int id = nextMemberID;
+        nextMemberID++; // Increment the static counter for the next member
+        return id;
+    }
+
+    public String calculateMembershipAgeGroup() {
+        LocalDate currentDate = LocalDate.now();
+        int age = Period.between(dateOfBirth, currentDate).getYears();
+
+        if (age < 18) {
+            return "Junior";
+        } else {
+            return "Senior";
+        }
+    }
+
     public double calculateYearlyMemberFee() {
         LocalDate currentDate = LocalDate.now();
         int age = Period.between(dateOfBirth, currentDate).getYears();
@@ -112,20 +124,6 @@ public abstract class Member {
             yearlyMembershipFee = 1600.0 * 0.75; // Retiree membership fee with a 25% discount for members over 60
         }
         return yearlyMembershipFee;
-    }
-
-    //***TO STRING METHOD***--------------------------------------------------------------------------------------------
-    @Override
-    public String toString() {
-        DecimalFormat df = new DecimalFormat("#.00");
-        return  "\n"                      +
-                "***MEMBER'S INFORMATION" +
-                "Name: "                  + memberFirstName + " "  + memberLastName + '\n' +
-                "Date of birth: "         + dateOfBirth     + '\n' +
-                "Active member: "         + isActiveMember  + '\n' +
-                "Category: "              + memberType      + '\n' +
-                "Yearly membership fee: " + df.format(yearlyMembershipFee) +" DKK\n" +
-                "Debt: "                  + memberDebt      + '\n' ;
     }
 
     //------------------------------------------------------------------------------------------------------------------

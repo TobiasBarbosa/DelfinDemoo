@@ -6,12 +6,7 @@ public class MemberCollection {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
     //Do SearchMember() method work properly?
-
-    //***OVERVIEW METHODS***--------------------------------------------------------------------------------------------
-    //addMembersToList()            //removeMemberFromList()//       //searchMember()//
-    //editMember()                 //searchMember()                //findSpecificMember
-    //removeMember()              //calculateTotalDebt()         //searchMemberDebt()
-    //calculateTotalYearlyMembershipIncome()
+    //TODO - which class to place getAllSeniorMembers & getAllJuniorMembers?
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private ArrayList<Member> membersList;
@@ -21,6 +16,7 @@ public class MemberCollection {
         this.membersList = new ArrayList<>();
     }
 
+
     //***ADD & REMOVE METHODS***----------------------------------------------------------------------------------------
     public void addMembersToList(Member member){
         membersList.add(member);
@@ -28,6 +24,36 @@ public class MemberCollection {
 
     public void removeMemberFromList(Member member){
         membersList.remove(member);
+    }
+
+    //***GETTER METHODS***----------------------------------------------------------------------------------------------
+    private String getMemberListAsString() {
+        String teamMembers = "";
+        for (Member member : membersList) {
+            teamMembers += member.getMemberFirstName() + ' ' + member.getMemberLastName() + '\n';
+        }
+        return teamMembers;
+    }
+
+
+    public ArrayList<String> getAllSeniorMembers() {
+        ArrayList<String> seniorMembers = new ArrayList<>();
+        for (Member member : membersList) {
+            if(member.isActiveMember().equals("Yes")) {
+                seniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
+            }
+        }
+        return seniorMembers; //needs to know which coach the list is for...
+    }
+
+    public ArrayList<String> getAllJuniorMembers() {
+        ArrayList<String> juniorMembers = new ArrayList<>();
+        for (Member member : membersList) {
+            if(member.isActiveMember().equals("No")) {
+                juniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
+            }
+        }
+        return juniorMembers; //needs to know which coach the list is for...
     }
 
     //***USER METHODS***------------------------------------------------------------------------------------------------
@@ -68,16 +94,12 @@ public class MemberCollection {
                 memberToEdit.setDateOfBirth(LocalDate.parse(newValue));
                 break;
 
-            case 4: //debt
-                memberToEdit.setMemberDebt(Double.parseDouble(newValue));
-                break;
-
-            case 5: //isActive
+            case 4: //isActive
                 memberToEdit.setActiveMember(Boolean.parseBoolean(newValue));
                 break;
 
-            case 6: //member type
-                memberToEdit.setMemberType(newValue);
+            case 5: //debt
+                memberToEdit.setMemberDebt(Double.parseDouble(newValue));
                 break;
 
             case 0: //exit
@@ -124,10 +146,13 @@ public class MemberCollection {
         return foundMembersDebt;
     }
 
+
+
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString(){
-        return "All members: " + membersList;//.getName - only needs to print names, right?
+        return "All members:\n" +
+                getMemberListAsString();
     }
 
     //------------------------------------------------------------------------------------------------------------------

@@ -8,31 +8,32 @@ public class MemberExercise extends Member {
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
     //Do we need any attributes for the constructor?
     //we need teams inside the constructor
-    //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
+    //How to properly use the super() function in the constructor as a subclass?
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public MemberExercise(String firstName, String lastName, int memberID, LocalDate dateOfBirth, boolean isActiveMember,
-                          MemberType memberType){
-        super(firstName,
-              lastName,
-              memberID,
+    public MemberExercise(String memberFirstName, String memberLastName, LocalDate dateOfBirth,
+                          boolean isActiveMember, double memberDebt){
+
+        super(memberFirstName,
+              memberLastName,
               dateOfBirth,
               isActiveMember,
-              memberType);
-              //teams)
+              memberDebt);
     }
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.00");
+
         return  "***MEMBER'S INFORMATION***\n" +
                 "Name: "                       + getMemberFirstName()    + " "  + getMemberLastName() + '\n' +
+                "Member ID: "                  + getMemberID()           + '\n' +
                 "Date of birth: "              + getDateOfBirth() + '\n' +
                 "Active member: "              + isActiveMember() + '\n' +
-                "Category: "                   + getMemberType()  + '\n' +
-                "Yearly membership fee: "      + df.format(getYearlyMembershipFee()) +" DKK\n" +
-                "Debt: "                       + getMemberDebt()  + '\n' ;
+                "Senior or Junior: "           + getMembershipAgeGroup() + '\n' +
+                "Yearly membership fee: "      + df.format(getYearlyMembershipFee()) + " DKK\n" +
+                "Debt: "                       + df.format(getMemberDebt())          + " DKK\n" ;
     }
 
     //------------------------------------------------------------------------------------------------------------------

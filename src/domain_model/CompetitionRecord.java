@@ -2,29 +2,24 @@ package domain_model;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
-public class CompetitionRecord {
+public class CompetitionRecord extends Record{
 
     //QUESTIONS & MISSING CODE***---------------------------------------------------------------------------------------
-    //How to insert the member in the constructor so it connects to an actual instance?
+    //How to insert the member in the constructor, so it connects to an actual instance?
+    //Best record comparator in this class?
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
-    private Discipline discipline;
-    private int lengthMeter;
-    private double resultTimeMinutes;
     private String event;
-    private LocalDate competitionDate;
-    MemberCompetition memberCompetition;
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
-    public CompetitionRecord(Discipline discipline, int lengthMeter, double resultTimeMinutes, String event,
-                             LocalDate competitionDate /*, MemberCompetition memberCompetition*/){
-        this.discipline = discipline;
-        this.lengthMeter = lengthMeter;
-        this.resultTimeMinutes = resultTimeMinutes;
+    public CompetitionRecord(Discipline discipline, int lengthMeter, double resultTimeMinutes, LocalDate date,
+                             String event){
+
+        super(discipline,
+              lengthMeter,
+              resultTimeMinutes,
+              date);
         this.event = event;
-        this.competitionDate = competitionDate;
-        //this.memberCompetition = memberCompetition;
-        //memberCompetition.addCompetitionRecord(this);
     }
 
     //***METHODS***-----------------------------------------------------------------------------------------------------
@@ -33,12 +28,12 @@ public class CompetitionRecord {
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     public String toString(){
         DecimalFormat df = new DecimalFormat("#.00");
-        return /*"***MEMBER'S COMPETITION RECORDS***\n"*/ "\n"  +
-                "Discipline: "        + discipline      + '\n'        +
-                "Length: "            + lengthMeter     + " meter"    + '\n' +
-                "Time result (min): " + df.format(resultTimeMinutes) + '\n' +
-                "Date: "              + competitionDate + '\n'        +
-                "Event: "             + event           + '\n';
+        return  /*"***MEMBER'S COMPETITION RECORDS***\n"*/  '\n'           +
+                "Discipline: "        + getDiscipline()   + '\n'           +
+                "Length: "            + getLengthMeter()  + " meter"       + '\n' +
+                "Time result (min): " + df.format(getResultTime()) + '\n' +
+                "Date: "              + getDate()         + '\n'           +
+                "Event: "             + event             + '\n';
     }
 
     //------------------------------------------------------------------------------------------------------------------
