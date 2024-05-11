@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class FileHandler {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
+    //how to approach ArrayList when loading to the file?
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     File file = new File("CovidData.csv");
@@ -36,7 +37,8 @@ public class FileHandler {
                     attributes[1],
                     (LocalDate.parse(attributes[2])),
                     (Boolean.parseBoolean(attributes[3])),
-                    (Double.parseDouble(attributes[4]))
+                    (Double.parseDouble(attributes[4])), //
+                    //How do we get an ArrayList in here?
             ) {
             };
 
