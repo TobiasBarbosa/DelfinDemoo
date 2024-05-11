@@ -17,6 +17,7 @@ public class MemberCollection {
     ArrayList<Record> recordList;
     Member member;
     Discipline discipline;
+    RecordComparator recordComparator:
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public MemberCollection(){
@@ -156,14 +157,40 @@ public class MemberCollection {
 
 
     //***COMPARATOR METHODS***------------------------------------------------------------------------------------------
+    //Reduced code method...
+    public List<Record> findTopRecords(Discipline discipline, String ageGroup, boolean isCompetition) {
+        List<Record> recordList = new ArrayList<>();
+        for (Record record : this.recordList) {
+            if ((isCompetition && record instanceof CompetitionRecord) || (!isCompetition && record instanceof TrainingRecord)) {
+                if (record.getDiscipline() == discipline && member.calculateMembershipAgeGroup().equals(ageGroup)) {
+                    recordList.add(record);
+                }
+            }
+        }
+        Collections.sort(recordList, recordComparator);
+
+        return recordList.subList(0, 4);
+    }
+
+    public List<Record> findTopFiveCompetitionRecords(Discipline discipline, String ageGroup) {
+        return findTopRecords(discipline, ageGroup, true);
+    }
+
+    public List<Record> findTopFiveTrainingRecords(Discipline discipline, String ageGroup) {
+        return findTopRecords(discipline, ageGroup, false);
+    }
+
+
+
     //***CRAWL***-------------------------------------------------------------------------------------------------------
+    //Or this method, but a lot of code...
     public List<Record> findTopFiveCompetitionRecordJuniorCrawl(){
         ArrayList<Record> competitionRecordList = new ArrayList<>();
         for (Record record : recordList) {
             if (record instanceof CompetitionRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Junior") ) {
                     competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -174,7 +201,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -185,7 +212,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 trainingRecordCrawlList.add(record);
             }
-        } Collections.sort(trainingRecordCrawlList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordCrawlList, recordComparator); //sorterer resultTime
 
         return trainingRecordCrawlList.subList(0,4);
     }
@@ -196,7 +223,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.CRAWL && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 trainingRecordCrawlList.add(record);
             }
-        } Collections.sort(trainingRecordCrawlList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordCrawlList, recordComparator); //sorterer resultTime
 
         return trainingRecordCrawlList.subList(0,4);
     }
@@ -208,7 +235,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -219,7 +246,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -230,7 +257,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 trainingRecordButterflyList.add(record);
             }
-        } Collections.sort(trainingRecordButterflyList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordButterflyList, recordComparator); //sorterer resultTime
 
         return trainingRecordButterflyList.subList(0,4);
     }
@@ -241,7 +268,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.BUTTERFLY && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 trainingRecordButterflyList.add(record);
             }
-        } Collections.sort(trainingRecordButterflyList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordButterflyList, recordComparator); //sorterer resultTime
 
         return trainingRecordButterflyList.subList(0,4);
     }
@@ -253,7 +280,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -264,7 +291,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -275,7 +302,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 trainingRecordBreaststrokeList.add(record);
             }
-        } Collections.sort(trainingRecordBreaststrokeList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordBreaststrokeList, recordComparator); //sorterer resultTime
 
         return trainingRecordBreaststrokeList.subList(0,4);
     }
@@ -286,7 +313,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.BREASTSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 trainingRecordBreaststrokeList.add(record);
             }
-        } Collections.sort(trainingRecordBreaststrokeList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordBreaststrokeList, recordComparator); //sorterer resultTime
 
         return trainingRecordBreaststrokeList.subList(0,4);
     }
@@ -298,7 +325,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -309,7 +336,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -320,7 +347,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 trainingRecordBackstrokeList.add(record);
             }
-        } Collections.sort(trainingRecordBackstrokeList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordBackstrokeList, recordComparator); //sorterer resultTime
 
         return trainingRecordBackstrokeList.subList(0,4);
     }
@@ -331,7 +358,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.BACKSTROKE && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 trainingRecordBackstrokeList.add(record);
             }
-        } Collections.sort(trainingRecordBackstrokeList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordBackstrokeList, recordComparator); //sorterer resultTime
 
         return trainingRecordBackstrokeList.subList(0,4);
     }
@@ -343,7 +370,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -354,7 +381,7 @@ public class MemberCollection {
             if (record instanceof CompetitionRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 competitionRecordList.add(record);
             }
-        } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(competitionRecordList, recordComparator); //sorterer resultTime
 
         return competitionRecordList.subList(0,4);
     }
@@ -365,7 +392,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Junior") ) {
                 trainingRecordFreestyleList.add(record);
             }
-        } Collections.sort(trainingRecordFreestyleList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordFreestyleList, recordComparator); //sorterer resultTime
 
         return trainingRecordFreestyleList.subList(0,4);
     }
@@ -376,7 +403,7 @@ public class MemberCollection {
             if (record instanceof TrainingRecord && discipline == Discipline.FREESTYLE && member.calculateMembershipAgeGroup().equals("Senior") ) {
                 trainingRecordFreestyleList.add(record);
             }
-        } Collections.sort(trainingRecordFreestyleList, new RecordComparator()); //sorterer resultTime
+        } Collections.sort(trainingRecordFreestyleList, recordComparator); //sorterer resultTime
 
         return trainingRecordFreestyleList.subList(0,4);
     }

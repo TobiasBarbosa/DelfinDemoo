@@ -42,6 +42,10 @@ public abstract class Member {
         return memberLastName;
     }
 
+    public String getFullMemberName(){
+        return memberFirstName + " " + memberLastName;
+    }
+
     public int getMemberID(){
         return memberID;
     }
