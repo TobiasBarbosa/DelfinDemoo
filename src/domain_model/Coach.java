@@ -38,8 +38,6 @@ public class Coach {
             return coachedMemberNames; //needs to know which coach the list is for...
     }
 
-
-
     //***ADD & REMOVE METHODS***----------------------------------------------------------------------------------------
     public void addCompetitionMemberToCoach(MemberCompetition memberCompetition){
         coachedMembers.add(memberCompetition);

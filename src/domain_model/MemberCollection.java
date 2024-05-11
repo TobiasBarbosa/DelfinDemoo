@@ -50,7 +50,7 @@ public class MemberCollection {
                 juniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
             }
         }
-        return juniorMembers; //needs to know which coach the list is for...
+        return juniorMembers;
     }
 
     public ArrayList<String> getAllSeniorMembers() {
@@ -60,10 +60,8 @@ public class MemberCollection {
                 seniorMembers.add(member.getMemberFirstName() + " " + member.getMemberLastName());
             }
         }
-        return seniorMembers; //needs to know which coach the list is for...
+        return seniorMembers;
     }
-
-
 
     //***METHODS***-----------------------------------------------------------------------------------------------------
     public ArrayList<Member> searchMember(String membersSearched) {

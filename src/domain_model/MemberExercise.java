@@ -7,8 +7,7 @@ public class MemberExercise extends Member {
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
     //Do we need any additional attributes for the constructor?
-    //we need teams inside the constructor
-    //How to properly use the super() function in the constructor as a subclass?
+    //TODO create a team ArrayList<> inside the constructor
 
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public MemberExercise(String memberFirstName, String memberLastName, LocalDate dateOfBirth,

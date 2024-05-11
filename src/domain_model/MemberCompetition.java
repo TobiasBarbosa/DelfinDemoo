@@ -9,10 +9,7 @@ import java.util.Collections;
 public class MemberCompetition extends Member{
 
     //***QUESTIONS & MISSING CODE***------------------------------------------------------------------------------------
-    //How to properly use the super() function in the constructor as a subclass?
-    //TODO comparator class for record
-    //How do we use the comparator methods?
-    //find the best training result for all members
+    //TODO sort discipline in findBestTrainingRecord & findBestCompetitionRecord methods
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private ArrayList<CompetitionRecord> competitionRecord;
@@ -85,8 +82,6 @@ public class MemberCompetition extends Member{
         } Collections.sort(competitionRecordList, new RecordComparator()); //sorterer resultTime
         return (competitionRecordList.get(0)); //henter index 0 og retunerer den
     }
-
-
 
     //***TO STRING METHOD***--------------------------------------------------------------------------------------------
     @Override

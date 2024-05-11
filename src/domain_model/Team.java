@@ -5,6 +5,7 @@ public class Team {
 
     //***TO DO***-------------------------------------------------------------------------------------------------------
     //TODO - Add method to Teamlist -> print error code...
+    //Can we reduce code for all the different getTeam categories?
 
     //***ATTRIBUTES***--------------------------------------------------------------------------------------------------
     private Discipline discipline; //why not accessed?!
@@ -30,7 +31,7 @@ public class Team {
     public String isSeniorTeam(){
         return isSeniorTeam ? "Senior" : "Junior";
     }
-    
+
     public String getCoach() {
         return coach.getCoachFirstName() + ' ' + coach.getCoachLastName();
     }
@@ -47,7 +48,7 @@ public class Team {
         return teamMembers;
     }
 
-    //***TEAM DISCIPLINE & JUNIOR/SENIOR METHODS***---------------------------------------------------------------------
+    //***GET TEAMS***---------------------------------------------------------------------
     public ArrayList<String> getAllCrawlJuniorMembers(){
         ArrayList<String> crawlJuniorMembers = new ArrayList<>();
         for(Member member : teamList){
@@ -147,7 +148,6 @@ public class Team {
         }
         return freestyleSeniorMembers;
     }
-
 
     //***ADD & REMOVE METHODS***-----------------------------------------------------------------------------------------------------
     public void addMemberToTeam(Member member){

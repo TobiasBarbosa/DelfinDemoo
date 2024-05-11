@@ -14,7 +14,6 @@ public class CompetitionRecord extends Record{
     //***CONSTRUCTOR***-------------------------------------------------------------------------------------------------
     public CompetitionRecord(Discipline discipline, int lengthMeter, double resultTimeMinutes, LocalDate date,
                              String event){
-
         super(discipline,
               lengthMeter,
               resultTimeMinutes,
