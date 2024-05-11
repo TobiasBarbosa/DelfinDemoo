@@ -28,25 +28,23 @@ public class FileHandler {
         }
 
         MemberCompetition memberCompetitionData = null;
-        while(sc.hasNext()) {
-            String line = sc.nextLine(); //Split linje og læg tokens i attributer
+        while(sc.hasNext()) { // forstår ikke
+            String line = sc.nextLine(); //Split linje og læg tokens i attributer // forstår ikke
             String[] attributes = line.split(";");
             memberCompetitionData = new MemberCompetition(
                     attributes[0],
                     attributes[1],
                     (LocalDate.parse(attributes[2])),
                     (Boolean.parseBoolean(attributes[3])),
-                    (Double.parseDouble(attributes[4])),
-                                (attributes[5])),
-                    attributes[6]    //  dato
+                    (Double.parseDouble(attributes[4]))
             ) {
             };
 
-            memberDataList.add(memberData);
+            memberCompetitionDataList.add(memberCompetitionData);
 
         }
         sc.close();
-        return memberDataList;
+        return memberCompetitionDataList;
     }
 
     //------------------------------------------------------------------------------------------------------------------
